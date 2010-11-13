@@ -1,0 +1,6 @@
+= administer
+Automatic admin interface generation
+
+== Copyright
+
+Copyright (c) 2010 Piotr Jakubowski, Marcin Baliński.
