@@ -1,5 +1,13 @@
 = administer
-Automatic admin interface generation
+Automatic admin interface generation for Ruby on Rails applications
+
+== Install
+=== Using Bundler
+Add this to your project's <tt>Gemfile</tt>
+	gem 'administer'
+
+And install
+	$ bundle install
 
 == Copyright
 
