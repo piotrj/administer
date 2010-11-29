@@ -11,6 +11,7 @@ begin
     gem.email = ["piotrj@gmail.com", "balinski@gmail.com"]
     gem.homepage = "http://github.com/piotrj/administer"
     gem.authors = ["Piotr Jakubowski", "Marcin Baliński"]
+    gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
