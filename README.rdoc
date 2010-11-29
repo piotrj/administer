@@ -8,6 +8,9 @@ Add this to your project's <tt>Gemfile</tt>
 
 And install
 	$ bundle install
+	
+== Usage
+Just go to /administer and have fun.
 
 == Copyright
 
