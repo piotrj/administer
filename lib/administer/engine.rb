@@ -1,5 +1,5 @@
 #lib/authr/engine.rb
-require "authr"
+require "administer"
 require "rails"
 
 module Administer

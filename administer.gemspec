@@ -5,22 +5,22 @@
 
 Gem::Specification.new do |s|
   s.name = %q{administer}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Piotr Jakubowski", "Marcin Bali\305\204ski"]
-  s.date = %q{2010-11-15}
+  s.date = %q{2010-11-29}
   s.description = %q{}
   s.email = ["piotrj@gmail.com", "balinski@gmail.com"]
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
   s.files = [
-    ".gitignore",
-     "README.rdoc",
-     "Rakefile",
-     "VERSION",
-     "lib/administer.rb"
+    "app/controllers/administer/dashboard_controller.rb",
+     "app/views/administer/dashboard/index.html.haml",
+     "config/routes.rb",
+     "lib/administer.rb",
+     "lib/administer/engine.rb"
   ]
   s.homepage = %q{http://github.com/piotrj/administer}
   s.rdoc_options = ["--charset=UTF-8"]
