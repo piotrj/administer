@@ -1,0 +1,1 @@
+require 'authr/engine'
