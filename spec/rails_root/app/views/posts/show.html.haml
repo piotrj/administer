@@ -1,0 +1,10 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), posts_path
+  = link_to t('edit'), edit_post_path(@post)
+
+%dl
+  %dt= Post.human_attribute_name :title
+  %dd= @post.title
+  %dt= Post.human_attribute_name :body
+  %dd= @post.body

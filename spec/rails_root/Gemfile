@@ -1,0 +1,19 @@
+source 'http://gems.github.com'
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'haml', '>= 3.0.18'
+gem 'administer', '0.2.0'
+
+group :test do
+  gem 'autotest'
+  gem 'factory_girl'
+  gem 'rspec-rails', '>= 2.1.0'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'nokogiri'
+  gem "capybara"
+  gem "launchy"
+  gem 'database_cleaner'
+end
