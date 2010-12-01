@@ -12,6 +12,13 @@ And install
 == Usage
 Just go to /administer and have fun.
 
+== Running tests
+While in administer root do following:
+  cd spec/rails_root
+  bundle exec rspec spec/ && bundle exec cucumber features/
+  
+Rake task automating this process will be delivered very soon.
+
 == Copyright
 
 Copyright (c) 2010 Piotr Jakubowski, Marcin Baliński.
