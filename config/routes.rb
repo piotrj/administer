@@ -3,5 +3,5 @@ Rails.application.routes.draw do |map|
     resources :dashboard
   end
   
-  math '/administer', to => 'administer#dashboard'
+  match 'administer', :to => 'administer/dashboard#index'
 end
