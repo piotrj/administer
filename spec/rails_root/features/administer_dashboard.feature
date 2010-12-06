@@ -5,5 +5,5 @@ Feature: Listing Posts
   Scenario: Viewing Dashboard page
     When I am on the administer dashboard page
     Then I should see "Administer Dashboard"
-    And I should see "Models List"
-    And I should see "Posts"
+    And I should see "Models:"
+    And I should see "Posts" within "ul.administer_model_list"
