@@ -57,7 +57,7 @@ Feature: Managing posts
       | title                   | body                      |
       | How to raise your kid   | You should be good parent |
     When I am on the administer dashboard page
-    And I follow "posts"
+    And I follow "Posts"
     Then I should see "How to raise your kid"
     And I should see "You should be good parent"
 

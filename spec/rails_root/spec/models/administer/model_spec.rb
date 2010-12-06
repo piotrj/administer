@@ -1,9 +1,15 @@
 require 'spec_helper'
 
 describe Administer::Model do
-  it "should return all models defined within ROOT/app/models/" do
+  it "should lookup for model given its name" do
+    Administer::Model.lookup('post').should == Post
+  end
+  
+  it "should return all models defined within ROOT/app/models/, using lookup" do
     Rails.root.should_receive(:join).with('app/models/**/*.rb').and_return('models_path')
     Dir.should_receive(:[]).with('models_path').and_return(['ROOT/app/models/post.rb'])
-    Administer::Model.all.should == [Post]
+    Administer::Model.should_receive(:lookup).with('post').and_return('PostStub')
+    Administer::Model.all.should == ['PostStub']
   end
+  
 end
