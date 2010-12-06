@@ -7,3 +7,4 @@ Feature: Dashboard
     Then I should see "Administer Dashboard"
     And I should see "Models:"
     And I should see "Posts" within "ul.administer_model_list"
+    And I should see "Categories" within "ul.administer_model_list"

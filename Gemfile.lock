@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     git (1.2.5)
+    haml (3.0.23)
     jeweler (1.5.1)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
@@ -12,4 +13,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml (>= 3.0.18)
   jeweler
