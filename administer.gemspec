@@ -17,9 +17,10 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     "app/controllers/administer/dashboard_controller.rb",
-     "app/controllers/administer/model_controller.rb",
+     "app/controllers/administer/models_controller.rb",
      "app/helpers/administer/dashboard_helper.rb",
      "app/views/administer/dashboard/index.html.haml",
+     "app/views/administer/models/index.html.haml",
      "config/routes.rb",
      "lib/administer.rb",
      "lib/administer/engine.rb",
@@ -59,6 +60,7 @@ Gem::Specification.new do |s|
      "spec/rails_root/lib/generators/haml/controller/controller_generator.rb",
      "spec/rails_root/lib/generators/haml/mailer/mailer_generator.rb",
      "spec/rails_root/lib/generators/haml/scaffold/scaffold_generator.rb",
+     "spec/rails_root/spec/controllers/administer/models_controller_spec.rb",
      "spec/rails_root/spec/controllers/posts_controller_spec.rb",
      "spec/rails_root/spec/factories/posts.rb",
      "spec/rails_root/spec/models/administer/model_spec.rb",
