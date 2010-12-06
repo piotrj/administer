@@ -1,4 +1,4 @@
-Feature: Listing Posts
+Feature: Dashboard
   In order to administer the blog
   I want to use administration dashboard
 
