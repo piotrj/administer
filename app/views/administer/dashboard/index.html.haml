@@ -4,4 +4,4 @@
   Models:
 %ul.administer_model_list
   - administer_model_names.each do |model_name|
-    %li= model_name
+    %li= link_to(model_name.human.pluralize, administer_models_path(:model_name => model_name))

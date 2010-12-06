@@ -4,8 +4,13 @@ module Administer
     before_filter :collection, :only => :index
     
     protected
+    def model_class
+      Administer::Model.lookup(params[:model_name])
+    end
+    helper_method :model_class
+    
     def collection
-      @collection = Administer::Model.lookup(params[:model_name]).all
+      @collection = model_class.all
     end
   end
 end

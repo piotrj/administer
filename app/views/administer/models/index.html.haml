@@ -1,0 +1,14 @@
+%ul.actions
+  %li= link_to('back', administer_dashboard_index_path)
+%h1= model_class.model_name.human.pluralize
+%table.items_list
+  %thead
+    %tr
+    - model_class.column_names.each do |column_name|
+      %th= column_name
+
+  %tbody
+    - @collection.each do |object|
+      %tr{:class => cycle('odd', 'even')}
+      - model_class.column_names.each do |column_name|
+        %td= object.send(column_name).to_s
