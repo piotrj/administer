@@ -1,3 +1,7 @@
 Rails.application.routes.draw do |map|
-  resources :administer, :controller => 'administer/dashboard'
+  namespace :administer do
+    resources :dashboard
+  end
+  
+  math '/administer', to => 'administer#dashboard'
 end
