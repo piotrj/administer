@@ -1,3 +1,2 @@
-module Administer
-  require 'administer/engine' if defined?(Rails)
-end
+require 'administer/engine'
+require 'administer/model'
