@@ -1,4 +1,3 @@
-#lib/authr/engine.rb
 require "administer"
 require "rails"
 
