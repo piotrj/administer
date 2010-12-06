@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{administer}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Piotr Jakubowski", "Marcin Bali\305\204ski"]
@@ -56,10 +56,6 @@ Gem::Specification.new do |s|
      "spec/rails_root/features/step_definitions/web_steps.rb",
      "spec/rails_root/features/support/env.rb",
      "spec/rails_root/features/support/paths.rb",
-     "spec/rails_root/lib/generators/haml/base.rb",
-     "spec/rails_root/lib/generators/haml/controller/controller_generator.rb",
-     "spec/rails_root/lib/generators/haml/mailer/mailer_generator.rb",
-     "spec/rails_root/lib/generators/haml/scaffold/scaffold_generator.rb",
      "spec/rails_root/spec/controllers/administer/models_controller_spec.rb",
      "spec/rails_root/spec/controllers/posts_controller_spec.rb",
      "spec/rails_root/spec/factories/posts.rb",
