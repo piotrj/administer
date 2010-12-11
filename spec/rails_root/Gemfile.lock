@@ -1,3 +1,10 @@
+PATH
+  remote: ../../
+  specs:
+    administer (0.2.2)
+      haml (>= 3.0.18)
+      jeweler
+
 GEM
   remote: http://gems.github.com/
   remote: http://rubygems.org/
@@ -29,7 +36,6 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
-    administer (0.2.1)
     arel (2.0.4)
     autotest (4.4.2)
     builder (2.1.2)
@@ -66,8 +72,13 @@ GEM
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
       trollop (~> 1.16.2)
+    git (1.2.5)
     haml (3.0.23)
     i18n (0.4.2)
+    jeweler (1.5.1)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
     json (1.4.6)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -130,7 +141,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  administer (= 0.2.1)
+  administer!
   autotest
   capybara
   cucumber
