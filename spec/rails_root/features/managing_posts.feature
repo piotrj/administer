@@ -13,6 +13,22 @@ Feature: Managing posts
     Then I should be on posts list
     And I should see "How to disassemble atomic bomb?"
     And I should see "You should avoid using fork for that."
+  
+  Scenario: Adding new blog post without title
+    Given no posts exist
+    When I am on the home page
+    And I follow "new post"
+    And I fill in "Body" with "You should avoid using fork for that."
+    And I press "Create Post"
+    Then I should see "Title can't be blank"
+    
+  Scenario: Adding new blog post without body
+    Given no posts exist
+    When I am on the home page
+    And I follow "new post"
+    And I fill in "Title" with "How to disassemble atomic bomb?"
+    And I press "Create Post"
+    Then I should see "Body can't be blank"
     
   @javascript
   Scenario: Deleting blog post
