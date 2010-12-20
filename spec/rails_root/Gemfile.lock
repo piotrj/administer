@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/marcinbalinski/projects/administer
+  remote: ../../
   specs:
     administer (0.2.2)
       haml (>= 3.0.18)
@@ -74,7 +74,7 @@ GEM
     git (1.2.5)
     haml (3.0.23)
     i18n (0.4.2)
-    jeweler (1.5.1)
+    jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
