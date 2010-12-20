@@ -1,5 +1,6 @@
 %ul.actions
   %li= link_to('back', administer_dashboard_index_path)
+  %li= link_to("New #{model_class.model_name.human}", new_administer_entity_path(:model_name => model_class.model_name))
 %h1= model_class.model_name.human.pluralize
 %table.items_list
   %thead
