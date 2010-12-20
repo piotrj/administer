@@ -1,7 +1,7 @@
 require 'administer'
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe Administer::ModelsController do
+describe Administer::EntitiesController do
   describe "GET /index" do
     it "should lookup for proper collection" do
       controller.should_receive(:model_class).and_return(Post)

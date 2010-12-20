@@ -1,5 +1,5 @@
 module Administer
-  class Administer::ModelsController < ApplicationController
+  class Administer::EntitiesController < ApplicationController
     unloadable
     before_filter :collection, :only => :index
     

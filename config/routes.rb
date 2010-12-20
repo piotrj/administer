@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :administer do
     resources :dashboard
-    resources :models
+    resources :entities
   end
   
   match 'administer', :to => 'administer/dashboard#index'
