@@ -21,6 +21,7 @@ Feature: Managing posts
     And I fill in "Body" with "You should avoid using fork for that."
     And I press "Create Post"
     Then I should see "Title can't be blank"
+    And there should be no posts
     
   Scenario: Adding new blog post without body
     Given no posts exist
@@ -29,6 +30,7 @@ Feature: Managing posts
     And I fill in "Title" with "How to disassemble atomic bomb?"
     And I press "Create Post"
     Then I should see "Body can't be blank"
+    And there should be no posts
     
   @javascript
   Scenario: Deleting blog post
