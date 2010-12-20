@@ -2,6 +2,15 @@
 require 'rubygems'
 require 'rake'
 
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_opts = %[--color]
+  t.verbose = false
+end
+
+task :default => [:spec]
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|

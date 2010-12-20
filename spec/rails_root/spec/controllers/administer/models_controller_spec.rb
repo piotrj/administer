@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'administer'
+require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Administer::ModelsController do
   describe "GET /index" do

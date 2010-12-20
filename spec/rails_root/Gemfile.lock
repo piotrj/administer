@@ -1,5 +1,5 @@
 PATH
-  remote: ../../
+  remote: /Users/marcinbalinski/projects/administer
   specs:
     administer (0.2.2)
       haml (>= 3.0.18)
