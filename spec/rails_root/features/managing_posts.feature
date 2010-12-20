@@ -78,4 +78,13 @@ Feature: Managing posts
     And I follow "Posts"
     Then I should see "How to raise your kid"
     And I should see "You should be good parent"
-
+    
+  Scenario: Creating posts
+    When I am on administer posts list
+    And I follow "New Post"
+    And I fill in "Title" with "How to disassemble atomic bomb?"
+    And I fill in "Body" with "You should avoid using fork for that."
+    And I press "Create Post"
+    Then I should see "Posts"
+    And I should see "How to disassemble atomic bomb?"
+    And I should see "You should avoid using fork for that."

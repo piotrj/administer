@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the administer dashboard page/
       '/administer'
+    when /administer (.*) list/
+      administer_entities_path(:model_name => $1.singularize.camelize)
     when /posts list/
       '/posts'
 
