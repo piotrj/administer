@@ -44,7 +44,7 @@ Feature: Managing posts
     And I should not see "How to raise your kid"
   
   @javascript
-  Scenario: Cancel deleteting blog post
+  Scenario: Cancel deleting blog post
     Given following posts exists:
       | title                   | body                      |
       | How to raise your kid   | You should be good parent |
