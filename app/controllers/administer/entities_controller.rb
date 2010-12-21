@@ -28,6 +28,7 @@ module Administer
       @collection = model_class.all
     end
     
+    # TODO: move this to model
     def fields
       @fields = model_class.columns.map(&:name).delete_if{ |name| ["id", "created_at", "updated_at"].any?{ |a| a == name } }
     end
