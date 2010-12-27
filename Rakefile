@@ -12,10 +12,15 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "spec/rails_root/features --format pretty"
+  t.cucumber_opts = "features --format pretty"
 end
 
-task :default => [:spec, :features]
+task :default do
+  Dir.chdir('spec/rails_root/') do
+    Rake::Task['spec'].invoke
+    Rake::Task['features'].invoke
+  end
+end
 
 begin
   require 'jeweler'
