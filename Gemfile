@@ -1,5 +1,4 @@
 source :rubygems
-gem 'jeweler'
 gem 'haml', '>= 3.0.18'
 gem 'rails', '3.0.3'
 
