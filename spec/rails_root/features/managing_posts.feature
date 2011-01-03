@@ -54,18 +54,18 @@ Feature: Managing posts
     Then I should be on the home page
     And I should see "How to raise your kid"
 
-	Scenario: Editing blog post
-		Given following posts exists:
-	    | title                   | body                      |
-	    | How to raise your kid   | You should be good parent |
-		When I am on the home page
-		Then I should see "How to raise your kid"
-		When I follow "edit"
-		And I fill in "Title" with "What do you want to do today?"
-		And I fill in "Body" with "Every god damn thing"
-		And I press "Update"
-		Then I should be on posts list
-		And I should see "What do you want to do today"
+  Scenario: Editing blog post
+    Given following posts exists:
+      | title                   | body                      |
+      | How to raise your kid   | You should be good parent |
+    When I am on the home page
+    Then I should see "How to raise your kid"
+    When I follow "edit"
+    And I fill in "Title" with "What do you want to do today?"
+    And I fill in "Body" with "Every god damn thing"
+    And I press "Update"
+    Then I should be on posts list
+    And I should see "What do you want to do today"
     And I should see "Every god damn thing"
 
   # Administer
@@ -82,6 +82,8 @@ Feature: Managing posts
   Scenario: Creating posts
     When I am on administer posts list
     And I follow "New Post"
+    Then I should see textfield with label "Title"
+    And I should see textarea with label "Body"
     And I fill in "Title" with "How to disassemble atomic bomb?"
     And I fill in "Body" with "You should avoid using fork for that."
     And I press "Create Post"

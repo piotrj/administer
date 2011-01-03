@@ -104,6 +104,10 @@ Then /^(?:|I )should see JSON:$/ do |expected_json|
   expected.should == actual
 end
 
+Then /^(?:|I )should see (.*) with label "([^"]*)"$/ do |fieldtype, label|
+  page.should send("have_#{fieldtype}".to_sym, label)
+end
+
 Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
   with_scope(selector) do
     if page.respond_to? :should
@@ -227,4 +231,3 @@ Then /^(?:|I )press "([^"]*)" and not confirm$/ do |button|
   page.evaluate_script("window.confirm = function(msg) { return false; }")
   When %{I press "#{button}"}
 end
-

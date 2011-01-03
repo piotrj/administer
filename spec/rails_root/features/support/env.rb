@@ -62,3 +62,36 @@ end
 # factory_girl setup
 require 'factory_girl'
 Dir["#{File.dirname(__FILE__)}/../../spec/factories/*.rb"].each {|f| require f}
+
+
+class Capybara::Document
+  def has_textfield?(locator)
+    find_field(:textfield, locator)
+  end
+  
+  def has_textarea?(locator)
+    find_field(:textarea, locator)
+  end
+
+  def find_field(type, locator)
+    all(:xpath, XPath::HTML.field_of_type(type, locator)).present?
+  end
+end
+
+module XPath::HTML
+  def self.field_of_type(type, locator)
+    xpath = fieldtype_to_xpath(type)
+    xpath = locate_field(xpath, locator)
+    xpath
+  end
+  
+  private 
+  def self.fieldtype_to_xpath(type)
+    case type
+    when :textfield
+      descendant(:input)[~attr(:type).one_of('submit', 'image', 'radio', 'checkbox', 'hidden', 'file')]
+    when :textarea
+      descendant(:textarea)  
+    end    
+  end
+end

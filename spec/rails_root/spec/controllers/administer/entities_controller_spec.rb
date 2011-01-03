@@ -11,10 +11,4 @@ describe Administer::EntitiesController do
       assigns[:collection].should == posts
     end
   end
-  
-  it "model_class should lookup for proper model" do
-    controller.should_receive(:params).and_return({:model_name => 'Post'})
-    Administer::Model.should_receive(:lookup).with('Post').and_return(Post)
-    controller.send(:model_class).should == Post
-  end
 end

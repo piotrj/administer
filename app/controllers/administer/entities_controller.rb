@@ -1,12 +1,12 @@
 module Administer
   class Administer::EntitiesController < ApplicationController
     unloadable
+    before_filter :set_model, :only => [:new, :create, :index]
     before_filter :collection, :only => :index
-    before_filter :fields, :only => [:new, :update]
+    before_filter :fields, :only => [:new, :create]
     
     def new
       @object = model_class.new
-      logger.info @fields
     end
     
     def create
@@ -20,9 +20,13 @@ module Administer
     
     protected
     def model_class
-      Administer::Model.lookup(params[:model_name])
+      @model.entity
     end
     helper_method :model_class
+    
+    def set_model
+      @model = Model.for(params[:model_name])
+    end
     
     def collection
       @collection = model_class.all
@@ -30,7 +34,7 @@ module Administer
     
     # TODO: move this to model
     def fields
-      @fields = model_class.columns.map(&:name).delete_if{ |name| ["id", "created_at", "updated_at"].any?{ |a| a == name } }
+      @fields = @model.fields
     end
   end
 end

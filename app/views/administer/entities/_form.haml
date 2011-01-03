@@ -1,4 +1,3 @@
 - fields.each do |field|
   %p
-    = f.label field.to_sym
-    = f.text_field field.to_sym
+    = render_field field, f
