@@ -84,6 +84,7 @@ Feature: Managing posts
     And I follow "New Post"
     Then I should see textfield with label "Title"
     And I should see textarea with label "Body"
+    And I should see dateselect with label "Publish on"
     And I fill in "Title" with "How to disassemble atomic bomb?"
     And I fill in "Body" with "You should avoid using fork for that."
     And I press "Create Post"

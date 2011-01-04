@@ -72,6 +72,14 @@ class Capybara::Document
   def has_textarea?(locator)
     find_field(:textarea, locator)
   end
+  
+  def has_dateselect?(locator)
+    id_prefix = find(:xpath, XPath::HTML.label(locator))[:for]
+    year = find_field(:select, "#{id_prefix}_1i")
+    month = find_field(:select, "#{id_prefix}_2i")
+    day = find_field(:select, "#{id_prefix}_3i")
+    year && month && day
+  end
 
   def find_field(type, locator)
     all(:xpath, XPath::HTML.field_of_type(type, locator)).present?
@@ -85,13 +93,19 @@ module XPath::HTML
     xpath
   end
   
+  def self.label(label)
+    anywhere(:label)[string.n.is(label)]
+  end
+
   private 
   def self.fieldtype_to_xpath(type)
     case type
     when :textfield
       descendant(:input)[~attr(:type).one_of('submit', 'image', 'radio', 'checkbox', 'hidden', 'file')]
     when :textarea
-      descendant(:textarea)  
+      descendant(:textarea)
+    when :select
+      descendant(:select)
     end    
   end
 end
