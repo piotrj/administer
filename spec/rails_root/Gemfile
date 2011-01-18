@@ -1,5 +1,4 @@
 source :rubygems
 gemspec :path => "../../"
 
-gem 'administer', :path => "../../"
 gem 'sqlite3-ruby', :require => 'sqlite3'
