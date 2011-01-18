@@ -1,3 +1,4 @@
+# TODO: Move specs one level up to make it more like gem specs and less app specs ?
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 

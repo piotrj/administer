@@ -6,20 +6,29 @@ require 'rspec/core/rake_task'
 require 'cucumber'
 require "cucumber/rake/task"
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.rspec_opts = %[--color]
-  t.verbose = false
+task :spec do
+  Dir.chdir('spec/rails_root/') do
+    system('rake spec')
+  end  
 end
 
-Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "features --format pretty"
+task :features do
+  Dir.chdir('spec/rails_root/') do
+    system('rake cucumber')
+  end
+end
+
+namespace :db do
+  task :migrate do
+    Dir.chdir('spec/rails_root/') do
+      system('rake db:migrate')
+    end
+  end
 end
 
 task :default do
-  Dir.chdir('spec/rails_root/') do
-    Rake::Task['spec'].invoke
-    Rake::Task['features'].invoke
-  end
+  Rake::Task['spec'].invoke
+  Rake::Task['features'].invoke
 end
 
 require 'rake/rdoctask'
