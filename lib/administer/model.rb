@@ -1,3 +1,5 @@
+require 'administer/fields'
+
 module Administer
   class Model
     
@@ -28,16 +30,6 @@ module Administer
       @entity = model_name
     end
     
-    def fields
-      all_fields = @entity.columns.map { |column| 
-        {
-          :name => column.name, 
-          :type => column.type
-        } 
-      }
-        
-       visible_fields = all_fields.delete_if{ |field| ["id", "created_at", "updated_at"].any?{ |a| a == field[:name] } }
-       visible_fields
-    end
+    include Administer::Fields
   end
 end

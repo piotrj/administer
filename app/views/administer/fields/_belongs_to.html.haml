@@ -1,0 +1,3 @@
+= f.label belongs_to[:key].to_sym
+/ TODO: Needs some kind of configuration to set up display options
+= f.select belongs_to[:key].to_sym, Category.all.map { |object| [object.name, object.id] }

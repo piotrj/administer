@@ -73,6 +73,10 @@ class Capybara::Document
     find_field(:textarea, locator)
   end
   
+  def has_select?(locator)
+    find_field(:select, locator)
+  end
+
   def has_dateselect?(locator)
     id_prefix = find(:xpath, XPath::HTML.label(locator))[:for]
     year = find_field(:select, "#{id_prefix}_1i")

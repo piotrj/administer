@@ -80,14 +80,20 @@ Feature: Managing posts
     And I should see "You should be good parent"
     
   Scenario: Creating posts
+    Given following categories exist:
+      | name          |
+      | Awesome Posts |
     When I am on administer posts list
     And I follow "New Post"
     Then I should see textfield with label "Title"
     And I should see textarea with label "Body"
     And I should see dateselect with label "Publish on"
-    And I fill in "Title" with "How to disassemble atomic bomb?"
-    And I fill in "Body" with "You should avoid using fork for that."
+    And I should see select with label "Category"
+    And I fill in "Title" with "How to raise your kid"
+    And I fill in "Body" with "You should be good parent."
+    And I select "Awesome Posts" from "Category"
     And I press "Create Post"
-    Then I should see "Posts"
-    And I should see "How to disassemble atomic bomb?"
-    And I should see "You should avoid using fork for that."
+    Then I should be on administer posts list
+    And following posts should exist:
+      | title                   | body                      | category_name   |
+      | How to raise your kid   | You should be good parent. | Awesome Posts   |

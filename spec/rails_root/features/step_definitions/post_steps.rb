@@ -13,3 +13,12 @@ Then /^there should be no posts$/ do
   Post.all.should be_empty
 end
 
+Then /^following posts should exist:$/ do |posts_table|
+  posts_table.hashes.each do |attributes|
+    category = attributes.delete("category_name")
+    post = Post.first(:conditions => attributes)
+    post.should_not be_nil
+    post.category.name.should == category if category
+  end
+end
+
