@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara', '>= 0.4.1'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'sqlite3'
 end
