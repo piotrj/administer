@@ -29,3 +29,18 @@ Feature: Managing posts via administer
     And following posts should exist:
       | title                   | body                      | category_name   |
       | How to raise your kid   | You should be good parent. | Awesome Posts   |
+
+  Scenario: Editing Posts
+    Given following posts exists:
+      | title                   | body                      |
+      | How to raise your kid   | You should be good parent |
+    When I am on administer posts list
+    And I follow "Edit"
+    Then I fill in "Title" with "Can we?"
+    And I fill in "Body" with "Yes, we can"
+    And I press "Update Post"
+    Then I should be on administer posts list
+    And following posts should exist:
+      | title     | body        |
+      | Can we?   | Yes, we can |
+

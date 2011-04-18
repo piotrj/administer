@@ -1,0 +1,9 @@
+%ul.actions
+  %li= link_to('back', administer_entities_path(:model_name => model_class.model_name))
+%h1 
+  Edit
+  = model_class.model_name.human
+= form_for @object, :url => administer_entity_path(@object, :model_name => model_class.model_name) do |f|
+  = render 'administer/shared/errors', :object => @object
+  = render 'form', :fields => @fields, :f => f
+  = f.submit "Update #{model_class.model_name}"
