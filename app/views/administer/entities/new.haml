@@ -4,11 +4,6 @@
   New
   = model_class.model_name.human
 = form_for @object, :url => administer_entities_path(:model_name => model_class.model_name) do |f|
-  - if @object.errors.any?
-    #errorExplanation
-      %h2= "#{pluralize(@post.errors.count, 'error')} prohibited this user from being saved:"
-      %ul
-      - @post.errors.full_messages.each do |msg|
-        %li= msg
+  = render 'administer/shared/errors', :object => @object
   = render 'form', :fields => @fields, :f => f
   = f.submit "Create #{model_class.model_name}"
