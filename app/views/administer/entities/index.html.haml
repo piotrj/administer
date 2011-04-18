@@ -11,5 +11,5 @@
   %tbody
     - @collection.each do |object|
       %tr{:class => cycle('odd', 'even')}
-      - model_class.column_names.each do |column_name|
-        %td= object.send(column_name).to_s
+        - model_class.column_names.each do |column_name|
+          %td= object.send(column_name).to_s
