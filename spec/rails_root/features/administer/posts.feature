@@ -49,5 +49,6 @@ Feature: Managing posts via administer
       | title                   | body                      |
       | How to raise your kid   | You should be good parent |
     When I am on administer posts list
-    And I click Delete
-    Then the post should disappear from posts list
+    And I press "Delete"
+    Then I should be on administer posts list
+    And there should be no posts
