@@ -43,4 +43,11 @@ Feature: Managing posts via administer
     And following posts should exist:
       | title     | body        |
       | Can we?   | Yes, we can |
-
+      
+  Scenario: Deleting post
+    Given following posts exists:
+      | title                   | body                      |
+      | How to raise your kid   | You should be good parent |
+    When I am on administer posts list
+    And I click Delete
+    Then the post should disappear from posts list
