@@ -31,6 +31,14 @@ module Administer
       end
     end
     
+    def destroy
+      @object = model_class.find(params[:id])
+      unless @object.destroy
+        flash[:error] = "Could not destroy object."
+      end
+      redirect_to administer_entities_path(:model_name => model_class.model_name)
+    end
+    
     protected
     def model_class
       @model.entity

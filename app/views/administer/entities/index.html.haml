@@ -14,4 +14,7 @@
       %tr{:class => cycle('odd', 'even')}
         - model_class.column_names.each do |column_name|
           %td= object.send(column_name).to_s
-        %td= link_to "Edit", edit_administer_entity_path(object, :model_name => model_class.model_name)
+        %td 
+          %ul.actions
+            %li= link_to("Edit", edit_administer_entity_path(object, :model_name => model_class.model_name))
+            %li= button_to("Delete", administer_entity_path(object, :model_name => model_class.model_name), :method => :delete)
