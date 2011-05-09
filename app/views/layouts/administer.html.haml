@@ -10,4 +10,8 @@
       %ul.navigation
         %li
           = link_to "Go to application", root_path
+    .flash#error
+      = flash[:error]
+    .flash#notice
+      = flash[:notice]
     = yield
