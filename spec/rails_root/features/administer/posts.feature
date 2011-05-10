@@ -30,6 +30,17 @@ Feature: Managing posts via administer
       | title                   | body                      | category_name   |
       | How to raise your kid   | You should be good parent. | Awesome Posts   |
 
+  Scenario: Creating invalid post
+    Given following categories exist:
+      | name          |
+      | Awesome Posts |
+    When I am on administer posts list
+    And I follow "New Post"
+    Then I fill in "Body" with "Post without title"
+    And I press "Create Post"
+    Then I should see "can't be blank"
+    And there should be no posts
+
   Scenario: Editing Posts
     Given following posts exists:
       | title                   | body                      |

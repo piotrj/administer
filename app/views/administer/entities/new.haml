@@ -4,6 +4,5 @@
   New
   = model_class.model_name.human
 = form_for @object, :url => administer_entities_path(:model_name => model_class.model_name) do |f|
-  = render 'administer/shared/errors', :object => @object
-  = render 'form', :fields => @fields, :f => f
+  = render 'form', :fields => @fields, :f => f, :object => @object
   = f.submit "Create #{model_class.model_name}"

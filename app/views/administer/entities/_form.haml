@@ -1,3 +1,9 @@
 - fields.each do |field|
   %p
     = render_field field, f
+    - if errors = object.errors[field[:name]]
+      %span.errors
+        - errors.each do |error|
+          = error
+          - unless errors.last == error
+            %br
