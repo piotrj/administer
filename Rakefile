@@ -2,10 +2,6 @@
 require 'rubygems'
 require 'rake'
 
-require 'rspec/core/rake_task'
-require 'cucumber'
-require "cucumber/rake/task"
-
 task :spec do
   Dir.chdir('spec/rails_root/') do
     system('rake spec')
