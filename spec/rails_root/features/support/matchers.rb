@@ -1,4 +1,4 @@
-class Capybara::Node::Document
+class Capybara::Session
   def has_textfield?(locator)
     find_field(:textfield, locator)
   end
