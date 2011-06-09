@@ -10,17 +10,23 @@ Feature: Managing posts via administer
     And I follow "Posts"
     Then I should see "How to raise your kid"
     And I should see "You should be good parent"
-    
+
   Scenario: Creating posts
     Given following categories exist:
       | name          |
       | Awesome Posts |
+    Given following comments exist:
+      | body          |
+      | First comment |
+      | What is this? |
     When I am on administer posts list
     And I follow "New Post"
     Then I should see textfield with label "Title"
     And I should see textarea with label "Body"
     And I should see dateselect with label "Publish on"
     And I should see select with label "Category"
+    And I should see checkbox with label "First comment"
+    And I should see checkbox with label "What is this"
     And I fill in "Title" with "How to raise your kid"
     And I fill in "Body" with "You should be good parent."
     And I select "Awesome Posts" from "Category"
@@ -54,7 +60,7 @@ Feature: Managing posts via administer
     And following posts should exist:
       | title     | body        |
       | Can we?   | Yes, we can |
-      
+
   Scenario: Deleting post
     Given following posts exists:
       | title                   | body                      |

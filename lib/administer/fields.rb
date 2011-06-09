@@ -9,6 +9,7 @@ module Administer
       }
 
       all_fields = convert_belongs_to_associations(all_fields)
+      all_fields = append_has_many_associations(all_fields)
 
       visible_fields = all_fields.delete_if{ |field| ["id", "created_at", "updated_at"].any?{ |a| a == field[:name] } }
       visible_fields
@@ -20,6 +21,10 @@ module Administer
       keys = entity_belongs_to.map{ |assoc| assoc[:key] }
       fields.delete_if { |field| keys.include? field[:name] }
       fields + entity_belongs_to
+    end
+
+    def append_has_many_associations(fields)
+      fields + associations(:has_many)
     end
 
     def associations(type = nil)

@@ -19,6 +19,10 @@ class Capybara::Session
     year && month && day
   end
 
+  def has_checkbox?(locator)
+    find_field(:checkbox, locator)
+  end
+
   def find_field(type, locator)
     all(:xpath, XPath::HTML.field_of_type(type, locator)).present?
   end
@@ -40,6 +44,8 @@ module XPath::HTML
     case type
     when :textfield
       descendant(:input)[~attr(:type).one_of('submit', 'image', 'radio', 'checkbox', 'hidden', 'file')]
+    when :checkbox
+      descendant(:input)[attr(:type) == 'checkbox']
     when :textarea
       descendant(:textarea)
     when :select

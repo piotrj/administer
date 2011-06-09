@@ -1,0 +1,5 @@
+%h2= has_many[:name].to_s.humanize
+- has_many[:entity].all.each do |entity|
+  - id = "#{parent.class.name.downcase}_#{has_many[:name].to_s.singularize}_ids_#{entity.id}"
+  = check_box_tag "#{parent.class.name.downcase}[#{has_many[:name].to_s.singularize}_ids][]", entity.id, parent.send(has_many[:name]).include?(entity), :id => id
+  = label_tag id, entity.name
