@@ -8,22 +8,18 @@ module Administer
         }
       }
 
-      all_fields = consider_belongs_to(all_fields)
+      all_fields = convert_belongs_to_associations(all_fields)
 
       visible_fields = all_fields.delete_if{ |field| ["id", "created_at", "updated_at"].any?{ |a| a == field[:name] } }
       visible_fields
     end
 
     private
-    def consider_belongs_to(fields)
-      entity_belongs_to = belongs_to_associations
+    def convert_belongs_to_associations(fields)
+      entity_belongs_to = associations(:belongs_to)
       keys = entity_belongs_to.map{ |assoc| assoc[:key] }
       fields.delete_if { |field| keys.include? field[:name] }
       fields + entity_belongs_to
-    end
-
-    def belongs_to_associations
-      associations(:belongs_to)
     end
 
     def associations(type = nil)
