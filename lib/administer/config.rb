@@ -1,12 +1,22 @@
 module Administer
   class Config
-    def self.configure(&block)
-      @@config = Config.new(&block)
+    class << self
+      def configure(&block)
+        @@config = Config.new(&block)
+      end
+
+      def for(klass)
+        @@config.get_config_for(klass)
+      end
     end
 
     def initialize(&block)
       @model_configs = {}
       self.instance_eval &block
+    end
+
+    def get_config_for(klass)
+      @model_configs[klass.name.to_sym]
     end
 
     private

@@ -30,6 +30,7 @@ module Administer
 
     def initialize(model_class)
       @entity = model_class
+      @config = Administer::Config.for(@entity)
     end
 
     include Administer::Fields
