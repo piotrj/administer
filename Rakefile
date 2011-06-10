@@ -5,7 +5,7 @@ require 'rake'
 task :spec do
   Dir.chdir('spec/rails_root/') do
     system('rake spec')
-  end  
+  end
 end
 
 task :features do

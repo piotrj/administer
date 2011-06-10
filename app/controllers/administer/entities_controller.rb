@@ -4,11 +4,11 @@ module Administer
     before_filter :set_model
     before_filter :collection, :only => :index
     before_filter :fields, :only => [:new, :create, :edit, :update]
-    
+
     def new
       @object = model_class.new
     end
-    
+
     def create
       @object = model_class.new(params[model_class.model_name.underscore])
       if @object.save
@@ -30,7 +30,7 @@ module Administer
         render :edit
       end
     end
-    
+
     def destroy
       @object = model_class.find(params[:id])
       unless @object.destroy
@@ -38,22 +38,21 @@ module Administer
       end
       redirect_to administer_entities_path(:model_name => model_class.model_name)
     end
-    
+
     protected
     def model_class
       @model.entity
     end
     helper_method :model_class
-    
+
     def set_model
       @model = Model.for(params[:model_name])
     end
-    
+
     def collection
       @collection = model_class.all
     end
-    
-    # TODO: move this to model
+
     def fields
       @fields = @model.fields
     end
