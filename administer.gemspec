@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'rails', '~> 3.0.3'
   s.add_runtime_dependency 'haml', ">= 3.0.18"
+  s.add_runtime_dependency 'superclass_hash'
 
   s.add_development_dependency 'autotest'
   s.add_development_dependency 'factory_girl'
