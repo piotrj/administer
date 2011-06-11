@@ -6,7 +6,7 @@ module Administer
       end
 
       def for(klass)
-        @@config.get_config_for(klass) if @@config
+        @@config.for(klass) if @@config
       end
     end
 
@@ -15,13 +15,13 @@ module Administer
       self.instance_eval &block
     end
 
-    def get_config_for(klass)
-      @model_configs[klass.name.to_sym]
+    def for(klass)
+      @model_configs[klass]
     end
 
     private
     def define(klass, &block)
-      @model_configs[klass.name.to_sym] = ModelConfigBuilder.new(&block).build
+      @model_configs[klass] = ModelConfigBuilder.new(&block).build
     end
   end
 
