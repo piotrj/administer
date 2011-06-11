@@ -6,7 +6,7 @@ module Administer
       end
 
       def for(klass)
-        @@config.get_config_for(klass)
+        @@config.get_config_for(klass) if @@config
       end
     end
 
@@ -21,18 +21,27 @@ module Administer
 
     private
     def define(klass, &block)
-      @model_configs[klass.name.to_sym] = ModelConfig.new(&block)
+      @model_configs[klass.name.to_sym] = ModelConfigBuilder.new(&block).build
     end
   end
 
-  class ModelConfig
+  class ModelConfigBuilder
     def initialize(&block)
-      self.instance_eval &block
+      @model_config = ModelConfig.new
+      self.instance_eval(&block)
     end
 
     def association_display(method_name, &block)
       raise "Provide method_name or block and not both" unless [method_name, block].select(&:present?).count == 1
-      @association_display = method_name || block
+      @model_config.association_display = method_name || block
+    end
+
+    def build
+      @model_config
+    end
+
+    class ModelConfig
+      attr_accessor :association_display
     end
   end
 end
