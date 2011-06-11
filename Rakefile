@@ -1,11 +1,10 @@
 # encoding: utf-8
 require 'rubygems'
 require 'rake'
+require 'rspec/core/rake_task'
 
-task :spec do
-  Dir.chdir('spec/rails_root/') do
-    system('rake spec')
-  end
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_opts = ["--color", "--format documentation"]
 end
 
 task :features do
@@ -22,10 +21,7 @@ namespace :db do
   end
 end
 
-task :default do
-  Rake::Task['spec'].invoke
-  Rake::Task['features'].invoke
-end
+task :default => [:spec, :features]
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

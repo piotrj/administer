@@ -1,2 +1,2 @@
 require 'factory_girl'
-Dir["#{File.dirname(__FILE__)}/../../spec/factories/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/../../../factories/*.rb"].each { |f| require f }
