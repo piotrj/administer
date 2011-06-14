@@ -1,6 +1,6 @@
 - fields.each do |field|
   %p
-    = render field.partial, :field => field
+    = render field.partial, :field => field, :f => f
     - if errors = object.errors[field.name]
       %span.errors
         - errors.each do |error|
