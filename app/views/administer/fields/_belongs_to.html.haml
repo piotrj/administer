@@ -1,2 +1,2 @@
-= f.label field.name
-= f.select field.name, field.collection.map { |object| [fields.display_object(object), object.id] }
+= f.label field.primary_key, field.name.to_s.humanize
+= f.select field.primary_key, field.collection.map { |object| [field.display_object(object), object.id] }

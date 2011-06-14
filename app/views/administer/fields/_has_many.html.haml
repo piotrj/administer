@@ -1,4 +1,4 @@
-%h2= has_many.name.humanize
-- has_many.collection.each do |entity|
-  = check_box_tag field.check_box_name, entity.id, field.checked?(entity), :id => field.dom_id
-  = label_tag field.dom_id, field.display_object(entity)
+%h2= field.name.to_s.humanize
+- field.collection.each do |entity|
+  = check_box_tag field.check_box_name, entity.id, field.checked?(@object, entity), :id => field.dom_id(entity)
+  = label_tag field.dom_id(entity), field.display_object(entity)
