@@ -1,3 +1,2 @@
-= f.label belongs_to[:key].to_sym
-/ TODO: Needs some kind of configuration to set up display options
-= f.select belongs_to[:key].to_sym, belongs_to[:entity].all.map { |object| [object.name, object.id] }
+= f.label field.name
+= f.select field.name, field.collection.map { |object| [fields.display_object(object), object.id] }
