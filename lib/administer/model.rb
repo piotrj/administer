@@ -33,6 +33,16 @@ module Administer
       @config = Administer::Config.for(@entity)
     end
 
+    def display_for_association(object)
+      display_function = @config.association_display
+      puts display_function.inspect
+      if display_function.is_a? Symbol
+        object.send(display_function)
+      else
+        object.instance_eval(display_function)
+      end
+    end
+
     include Administer::Fields
   end
 end
