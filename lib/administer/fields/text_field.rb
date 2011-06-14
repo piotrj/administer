@@ -1,6 +1,6 @@
 module Administer
   module Fields
-    class TextField
+    class TextField < Administer::Fields::Base
     end
   end
 end
