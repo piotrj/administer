@@ -1,41 +1,30 @@
+require File.expand_path("fields/base", File.dirname(__FILE__))
+require File.expand_path("fields/association", File.dirname(__FILE__))
+Dir[ File.expand_path("fields/**/*.rb", File.dirname(__FILE__))].each { |f| require f }
 module Administer
   module Fields
     def fields
-      all_fields = @entity.columns.map { |column|
-        {
-          :name => column.name,
-          :type => column.type
-        }
-      }
+      all_fields = get_fields_list
 
-      all_fields = convert_belongs_to_associations(all_fields)
-      all_fields = append_has_many_associations(all_fields)
-
-      visible_fields = all_fields.delete_if{ |field| ["id", "created_at", "updated_at"].any?{ |a| a == field[:name] } }
-      visible_fields
+      visible_fields = all_fields.delete_if{ |field| ["id", "created_at", "updated_at"].any?{ |a| a == field.name } }
+      FieldBuilder.build_fields_for(visible_fields)
     end
 
     private
-    def convert_belongs_to_associations(fields)
-      entity_belongs_to = associations(:belongs_to)
-      keys = entity_belongs_to.map{ |assoc| assoc[:key] }
-      fields.delete_if { |field| keys.include? field[:name] }
-      fields + entity_belongs_to
+    def get_fields_list
+      fields = without_belongs_to_keys(@entity.columns)
+      fields + reflect_on_all_associations(:belongs_to, :has_many)
     end
 
-    def append_has_many_associations(fields)
-      fields + associations(:has_many)
+    def columns
+      @entity.columns.map
     end
 
-    def associations(type = nil)
-      @entity.reflect_on_all_associations(type).map do |association|
-        {
-          :entity => association.klass,
-          :name => association.name,
-          :type => association.macro,
-          :key => association.primary_key_name
-        }
+    def without_belongs_to_keys(columns)
+      belongs_to_keys = @entity.reflect_on_all_associations(:belongs_to).map do |assoc|
+        assoc.primary_key_name
       end
+      columns.reject { |column| belongs_to_keys.include?(column.name) }
     end
   end
 end
