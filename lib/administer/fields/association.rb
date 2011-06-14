@@ -6,7 +6,7 @@ module Administer
         super(name)
         @association_class = association_class
         @parent = parent
-        @association_model = Administer::Model.for(@association_class.to_s)
+        @association_model = Administer::Model.for(@association_class)
       end
 
       def collection
