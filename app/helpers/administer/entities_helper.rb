@@ -1,16 +1,2 @@
 module Administer::EntitiesHelper
-  def render_field(field, form, object)
-    case field[:type]
-    when :text
-      render :partial => "administer/fields/textarea", :object => field, :locals => {:f => form}
-    when :date
-      render :partial => "administer/fields/dateselect", :object => field, :locals => {:f => form}
-    when :belongs_to
-      render :partial => "administer/fields/belongs_to", :object => field, :locals => {:f => form}
-    when :has_many
-      render :partial => "administer/fields/has_many", :object => field, :locals => {:f => form, :parent => object}
-    else
-      render :partial => "administer/fields/textfield", :object => field, :locals => {:f => form}
-    end
-  end
 end
