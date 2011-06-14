@@ -23,21 +23,21 @@ module Administer
     def define(klass, &block)
       @model_configs[klass] = ModelConfigBuilder.new(&block).build
     end
-  end
 
-  class ModelConfigBuilder
-    def initialize(&block)
-      @model_config = ModelConfig.new
-      self.instance_eval(&block)
-    end
+    class ModelConfigBuilder
+      def initialize(&block)
+        @model_config = ModelConfig.new
+        self.instance_eval(&block)
+      end
 
-    def association_display(method_name, &block)
-      raise "Provide method_name or block and not both" unless [method_name, block].select(&:present?).count == 1
-      @model_config.association_display = method_name || block
-    end
+      def association_display(method_name, &block)
+        raise "Provide method_name or block and not both" unless [method_name, block].select(&:present?).count == 1
+        @model_config.association_display = method_name || block
+      end
 
-    def build
-      @model_config
+      def build
+        @model_config
+      end
     end
 
     class ModelConfig
