@@ -35,7 +35,6 @@ module Administer
 
     def display_for_association(object)
       display_function = @config.association_display
-      puts display_function.inspect
       if display_function.is_a? Symbol
         object.send(display_function)
       else

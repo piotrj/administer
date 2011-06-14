@@ -7,13 +7,13 @@ module Administer
       all_fields = get_fields_list
 
       visible_fields = all_fields.delete_if{ |field| ["id", "created_at", "updated_at"].any?{ |a| a == field.name } }
-      FieldBuilder.build_fields_for(visible_fields)
+      FieldBuilder.new.build_fields_for(visible_fields)
     end
 
     private
     def get_fields_list
       fields = without_belongs_to_keys(@entity.columns)
-      fields + reflect_on_all_associations(:belongs_to, :has_many)
+      fields + associations(:has_many) + associations(:belongs_to)
     end
 
     def columns
@@ -21,10 +21,14 @@ module Administer
     end
 
     def without_belongs_to_keys(columns)
-      belongs_to_keys = @entity.reflect_on_all_associations(:belongs_to).map do |assoc|
+      belongs_to_keys = associations(:belongs_to).map do |assoc|
         assoc.primary_key_name
       end
       columns.reject { |column| belongs_to_keys.include?(column.name) }
+    end
+
+    def associations(type = nil)
+      @entity.reflect_on_all_associations(type)
     end
   end
 end

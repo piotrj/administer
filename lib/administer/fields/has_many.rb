@@ -1,7 +1,7 @@
 module Administer
   module Fields
     class HasMany < Administer::Fields::Association
-      def checked?(object)
+      def checked?(parent, object)
         parent.send(name).include?(object)
       end
 

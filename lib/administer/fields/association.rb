@@ -2,7 +2,7 @@ module Administer
   module Fields
     class Association < Administer::Fields::Base
       attr_reader :association_class, :parent, :association_config
-      def initialize(name, associaion_class, parent)
+      def initialize(name, association_class, parent)
         super(name)
         @association_class = association_class
         @parent = parent
