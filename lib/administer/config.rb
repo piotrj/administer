@@ -16,12 +16,12 @@ module Administer
     end
 
     def for(klass)
-      @model_configs[klass]
+      @model_configs[klass.to_s.to_sym]
     end
 
     private
     def define(klass, &block)
-      @model_configs[klass] = ModelConfigBuilder.new(&block).build
+      @model_configs[klass.to_s.to_sym] = ModelConfigBuilder.new(&block).build
     end
 
     class ModelConfigBuilder
