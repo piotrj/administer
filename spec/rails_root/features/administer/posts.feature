@@ -11,7 +11,6 @@ Feature: Managing posts via administer
     Then I should see "How to raise your kid"
     And I should see "You should be good parent"
 
-  @javascript
   Scenario: Creating posts
     Given following categories exist:
       | name          |
