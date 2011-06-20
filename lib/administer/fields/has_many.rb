@@ -6,11 +6,11 @@ module Administer
       end
 
       def check_box_name
-        "#{parent.class.name.downcase}[#{relation_ids}][]"
+        "#{parent_class.name.downcase}[#{relation_ids}][]"
       end
 
       def dom_id(object)
-        "#{parent.class.name.downcase}_#{relation_ids}_#{object.id}"
+        "#{parent_class.name.downcase}_#{relation_ids}_#{object.id}"
       end
 
       private
