@@ -11,6 +11,7 @@ Feature: Managing posts via administer
     Then I should see "How to raise your kid"
     And I should see "You should be good parent"
 
+  @javascript
   Scenario: Creating posts
     Given following categories exist:
       | name          |
@@ -30,11 +31,12 @@ Feature: Managing posts via administer
     And I fill in "Title" with "How to raise your kid"
     And I fill in "Body" with "You should be good parent."
     And I select "Awesome Posts" from "Category"
+    And I check "First comment"
     And I press "Create Post"
     Then I should be on administer posts list
     And following posts should exist:
-      | title                   | body                      | category_name   |
-      | How to raise your kid   | You should be good parent. | Awesome Posts   |
+      | title                   | body                        | category_name   | comments      |
+      | How to raise your kid   | You should be good parent.  | Awesome Posts   | First comment |
 
   Scenario: Creating invalid post
     Given following categories exist:

@@ -16,9 +16,16 @@ end
 Then /^following posts should exist:$/ do |posts_table|
   posts_table.hashes.each do |attributes|
     category = attributes.delete("category_name")
+    comments = attributes.delete("comments").try(:split, ";")
     post = Post.first(:conditions => attributes)
     post.should_not be_nil
     post.category.name.should == category if category
+    if comments.present?
+      post_comments_mapped = post.comments.map(&:body)
+      comments.all? { |c| post_comments_mapped.should include(c) }
+    end
   end
 end
+
+
 
