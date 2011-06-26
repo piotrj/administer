@@ -17,7 +17,7 @@ module Administer
     end
 
     def columns
-      @entity.columns.map
+      @entity.columns
     end
 
     def without_belongs_to_keys(columns)
