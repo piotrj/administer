@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :administer do
-    resources :dashboard
+    resources :dashboard, :only => :index
     resources :entities
   end
 
