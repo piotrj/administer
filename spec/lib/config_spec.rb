@@ -11,8 +11,8 @@ describe Administer::Config do
     describe "after defining configuration for particular model" do
       before(:each) do
         Administer::Config.configure do
-          define Post do
-            association_display :title
+          model Post do
+            display_name :title
           end
         end
       end
@@ -22,7 +22,7 @@ describe Administer::Config do
       end
 
       it "should have defined values" do
-        Administer::Config.for(Post).association_display.should == :title
+        Administer::Config.for(Post).display_name.should == :title
       end
     end
   end

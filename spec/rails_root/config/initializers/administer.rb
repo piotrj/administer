@@ -1,13 +1,15 @@
 Administer::Config.configure do
-  define Post do
-    association_display :title
+  model Post do
+    display_name do
+      title
+    end
   end
 
-  define Category do
-    association_display :name
+  model Category do
+    display_name :name
   end
 
-  define Comment do
-    association_display :body
+  model Comment do
+    display_name :body
   end
 end

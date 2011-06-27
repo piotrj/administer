@@ -14,7 +14,7 @@ module Administer
       end
 
       def display_object(object)
-        @association_model.display_for_association(object)
+        @association_model.display_name(object)
       end
     end
   end

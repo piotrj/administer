@@ -1,3 +1,5 @@
+Dir[ File.expand_path("config/**/*.rb", File.dirname(__FILE__))].each { |f| require f }
+
 module Administer
   class Config
     class << self
@@ -20,28 +22,8 @@ module Administer
     end
 
     private
-    def define(klass, &block)
+    def model(klass, &block)
       @model_configs[klass.to_s.to_sym] = ModelConfigBuilder.new(&block).build
-    end
-
-    class ModelConfigBuilder
-      def initialize(&block)
-        @model_config = ModelConfig.new
-        self.instance_eval(&block)
-      end
-
-      def association_display(method_name, &block)
-        raise "Provide method_name or block and not both" unless [method_name, block].select(&:present?).count == 1
-        @model_config.association_display = method_name || block
-      end
-
-      def build
-        @model_config
-      end
-    end
-
-    class ModelConfig
-      attr_accessor :association_display
     end
   end
 end
