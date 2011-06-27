@@ -1,8 +1,9 @@
-%ul.actions
-  %li= link_to('back', administer_entities_path(:model_name => model_class.model_name))
-%h1 
-  New
-  = model_class.model_name.human
-= form_for @object, :url => administer_entities_path(:model_name => model_class.model_name) do |f|
-  = render 'form', :fields => @fields, :f => f, :object => @object
-  = f.submit "Create #{model_class.model_name}"
+#new
+  %ul.actions
+    %li= link_to('back', administer_entities_path(:model_name => model_class.model_name))
+  %h1
+    New
+    = model_class.model_name.human
+  = form_for @object, :url => administer_entities_path(:model_name => model_class.model_name) do |f|
+    = render 'form', :fields => @fields, :f => f, :object => @object
+    = f.submit "Create #{model_class.model_name}"

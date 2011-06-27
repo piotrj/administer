@@ -1,20 +1,21 @@
-%ul.actions
-  %li= link_to('back', administer_dashboard_index_path)
-  %li= link_to("New #{model_class.model_name.human}", new_administer_entity_path(:model_name => model_class.model_name))
-%h1= model_class.model_name.human.pluralize
-%table.items_list
-  %thead
-    %tr
-    - model_class.column_names.each do |column_name|
-      %th= column_name
-    %th Actions
+#index
+  %ul.actions
+    %li= link_to('back', administer_dashboard_index_path)
+    %li= link_to("New #{model_class.model_name.human}", new_administer_entity_path(:model_name => model_class.model_name))
+  %h1= model_class.model_name.human.pluralize
+  %table.items_list
+    %thead
+      %tr
+      - model_class.column_names.each do |column_name|
+        %th= column_name
+      %th Actions
 
-  %tbody
-    - @collection.each do |object|
-      %tr{:class => cycle('odd', 'even')}
-        - model_class.column_names.each do |column_name|
-          %td= object.send(column_name).to_s
-        %td 
-          %ul.actions
-            %li= link_to("Edit", edit_administer_entity_path(object, :model_name => model_class.model_name))
-            %li= button_to("Delete", administer_entity_path(object, :model_name => model_class.model_name), :method => :delete)
+    %tbody
+      - @collection.each do |object|
+        %tr{:class => cycle('odd', 'even')}
+          - model_class.column_names.each do |column_name|
+            %td= object.send(column_name).to_s
+          %td
+            %ul.actions
+              %li= link_to("Edit", edit_administer_entity_path(object, :model_name => model_class.model_name))
+              %li= button_to("Delete", administer_entity_path(object, :model_name => model_class.model_name), :method => :delete)
