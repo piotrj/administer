@@ -1,0 +1,2 @@
+= f.label field.dom_id, field.name.to_s.humanize
+= select_tag field.select_name, options_for_select(field.options, form_object.send(field.name).try(:id)), {:id => field.dom_id}

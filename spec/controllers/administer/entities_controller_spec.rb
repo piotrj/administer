@@ -1,4 +1,3 @@
-require 'administer'
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Administer::EntitiesController do
@@ -11,7 +10,7 @@ describe Administer::EntitiesController do
       assigns[:collection].should == posts
     end
   end
-  
+
   describe "DELETE /:id" do
     it "should display error message when unable to delete" do
       controller.should_receive(:model_class).twice.and_return(Post)

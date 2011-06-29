@@ -13,7 +13,7 @@ module Administer
     private
     def get_fields_list
       fields = without_belongs_to_keys(@entity.columns)
-      fields + associations(:has_many) + associations(:belongs_to)
+      fields + associations
     end
 
     def columns

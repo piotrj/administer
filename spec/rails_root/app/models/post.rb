@@ -5,4 +5,6 @@ class Post < ActiveRecord::Base
   belongs_to :category
 
   has_many :comments
+
+  has_one :attachment
 end

@@ -10,6 +10,10 @@ module Administer
       def for(klass)
         @@config.for(klass) if @@config
       end
+
+      def controller
+        @@config.get_instance_variable(:@controller_config)
+      end
     end
 
     def initialize(&block)
@@ -24,6 +28,10 @@ module Administer
     private
     def model(klass, &block)
       @model_configs[klass.to_s.to_sym] = ModelConfigBuilder.new(&block).build
+    end
+
+    def controller(&block)
+      @controller_config = ControllerConfigBuilder.new(&block).build
     end
   end
 end

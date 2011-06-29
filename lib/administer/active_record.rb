@@ -15,6 +15,8 @@ module Administer::Fields
       BelongsTo.new(reflection.name, reflection.primary_key_name, reflection.klass, reflection.active_record)
     when :has_many
       HasMany.new(reflection.name, reflection.klass, reflection.active_record)
+    when :has_one
+      HasOne.new(reflection.name, reflection.association_foreign_key,   reflection.klass, reflection.active_record)
     end
   end
 end
